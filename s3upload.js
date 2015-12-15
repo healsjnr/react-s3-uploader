@@ -91,6 +91,7 @@ S3Upload.prototype.executeOnSignedUrl = function(file, callback) {
                 this.onError('Invalid signing server response JSON: ' + xhr.responseText, file);
                 return false;
             }
+            result.uploadedFileName = fileName;
             return callback(result);
         } else if (xhr.readyState === 4 && xhr.status !== 200) {
             return this.onError('Could not contact request signing server. Status = ' + xhr.status, file);
